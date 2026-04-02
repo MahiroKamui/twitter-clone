@@ -11,10 +11,12 @@ export async function POST(req: Request) {
     try {
         const insert = db.prepare('INSERT INTO users (name, username, password) VALUES (?, ?, ?)')
         insert.run(userData.name, userData.username, userData.password)
-    } catch (err) {
+    } 
+    catch (err) {
         console.log(err)
+        return Response.json({res: "Invalid username.", ok: false})
     }
 
-    return Response.json('Your account has been created!')
+    return Response.json({res: 'Your account has been created!'})
 }
 
