@@ -1,5 +1,5 @@
-import Database from 'better-sqlite3'
-const db = new Database('./db/database.db')
+import db from '@/db/db-init/init'
+
 
 export async function POST(req: Request) {
     const data = await req.json()

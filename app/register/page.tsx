@@ -4,7 +4,6 @@ import { useState } from "react"
 
 
 export default function page() {
-    const [showError, setShowError] = useState<boolean>(false)
     const [name, setName] = useState<string>("")
     const [username, setUsername] = useState<string>("")
     const [password, setPassword] = useState<string>("")
@@ -19,13 +18,13 @@ export default function page() {
             })
             .then(res => res.json())
             .then(data => {
-                !data.ok ? console.log(data.res) : setShowError(false)
+                if(data.ok == false) alert(data.res)
             })
             .catch(err => console.log(err))
         }
         catch (err) {
             console.log(err)
-        }
+        } 
         
     }
 
