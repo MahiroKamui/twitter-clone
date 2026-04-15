@@ -1,4 +1,4 @@
-import db from '@/db/db-init/init'
+import db from '@/db/db-init/initUsers'
 
 
 export async function POST(req: Request) {
@@ -13,8 +13,9 @@ export async function POST(req: Request) {
         insert.run(userData.name, userData.username, userData.password)
     } 
     catch (err) {
-        console.log(err)
-        return Response.json({res: "Invalid username.", ok: false})
+        console.log()
+        return Response.json({res: err, ok: false})
+        //return Response.json({res: "Invalid username.", ok: false})
     }
 
     return Response.json({res: 'Your account has been created!'})

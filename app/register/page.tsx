@@ -18,7 +18,7 @@ export default function page() {
             })
             .then(res => res.json())
             .then(data => {
-                if(data.ok == false) alert(data.res)
+                if(data.ok == false) console.log(data.res)
             })
             .catch(err => console.log(err))
         }
@@ -35,7 +35,7 @@ export default function page() {
                 <form onSubmit={signUp} className="flex flex-col items-center max-sm:w-120 gap-0.5">
                     <input type="text" placeholder="name" onChange={(e) => setName(e.target.value)} required className="bg-pink-300 w-65 h-10 pl-2 border-2 border-pink-700" />
                     <input type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)} required className="bg-pink-300 w-65 h-10 pl-2 border-2 border-pink-700" />
-                    <input type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} required className="bg-pink-300 w-65 h-10 pl-2 border-2 border-pink-700" />
+                    <input type="password" minLength={8} placeholder="password" onChange={(e) => setPassword(e.target.value)} required className="bg-pink-300 w-65 h-10 pl-2 border-2 border-pink-700" />
                     <input type="submit" className="mt-2 bg-pink-300 w-30 border-2 hover:bg-pink-400 active:bg-pink-500" />
                 </form>
             </div>

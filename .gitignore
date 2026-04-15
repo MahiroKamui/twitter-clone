@@ -43,4 +43,4 @@ next-env.d.ts
 
 # database (gets automatically created if not exists)
 
-/db
+database.db

@@ -10,6 +10,6 @@ db.exec(`
             password varchar(30) NOT NULL
         )
     `)
-db.exec(``)
+
 
 export default db
