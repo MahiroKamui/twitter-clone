@@ -1,4 +1,4 @@
-import db from '@/db/db-init/initUsers'
+import db from '@/db/db-init/init'
 
 
 export async function POST(req: Request) {
