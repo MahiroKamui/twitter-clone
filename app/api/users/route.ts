@@ -13,9 +13,7 @@ export async function POST(req: Request) {
         insert.run(userData.name, userData.username, userData.password)
     } 
     catch (err) {
-        console.log()
-        return Response.json({res: err, ok: false})
-        //return Response.json({res: "Invalid username.", ok: false})
+        return Response.json({res: "Invalid username.", ok: false})
     }
 
     return Response.json({res: 'Your account has been created!'})

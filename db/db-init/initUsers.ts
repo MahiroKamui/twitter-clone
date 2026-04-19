@@ -1,7 +1,6 @@
+import {Database} from "better-sqlite3";
 
-
-
-export default function createUsersIfNotExists(db: ) {
+export default function createUsersIfNotExists(db: Database) {
 
     db.exec(`
         CREATE TABLE IF NOT EXISTS users (
