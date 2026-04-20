@@ -4,6 +4,10 @@ import { createId } from "@paralleldrive/cuid2";
 
 
 
-export default async function POST(req: Request) {
+export async function POST(req: Request) {
+    const data = await req.json()
+    
+
+    console.log(data)
     return Response.json({res: "hello"})
 }
