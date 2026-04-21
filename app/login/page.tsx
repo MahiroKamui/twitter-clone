@@ -19,6 +19,10 @@ export default function page() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({username: username, password: password})
             })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
         }
         catch (err) {
             console.log(err)

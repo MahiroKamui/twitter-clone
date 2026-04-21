@@ -31,11 +31,11 @@ export default function page() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ name: name, username: username, password: password })
             })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.ok == false) setError(data.res); else setSignUpSuccessful(true)
-                })
-                .catch(err => console.log(err))
+            .then(res => res.json())
+            .then(data => {
+                if (data.ok == false) setError(data.res); else setSignUpSuccessful(true)
+            })
+            .catch(err => console.log(err))
         }
         catch (err) {
             console.log(err)
