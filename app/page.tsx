@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 
@@ -9,21 +9,31 @@ import { useState } from "react";
 
 export default function Home() {
   const [isAuthed, setIsAuthed] = useState<boolean>(false)
-  fetch('api/authStatus/')
-  .then(res => res.json())
-  .then(data => setIsAuthed(data.ok))
+  const [resMessage, setResMessage] = useState<string>("")
+
+  useEffect(() => {
+    fetch('api/authStatus/')
+    .then(res => res.json())
+    .then(data => {
+      setIsAuthed(data.ok))
+    })
+  }, [])
+
+
+  
+
 
   if(!isAuthed) {
     return (
       <div>
-        hel
+        {resMessage}
       </div>
     )
   }
 
   return (
-    <div className="">
-      logged in
+    <div className="flex flex-row min-h-[96.5vh] bg-neutral-400">
+      
     </div>
   );
 }

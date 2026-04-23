@@ -7,7 +7,7 @@ import { cookies } from "next/headers"
 
 export async function GET() {
     function checkIfExpired() {
-        const 
+        
     }
     const session = (await cookies()).get('Session')
 
