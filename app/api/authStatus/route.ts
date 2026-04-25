@@ -1,19 +1,12 @@
-import db from "@/db/db-init/init";
-import { cookies } from "next/headers"
+import { checkUser } from "@/lib/checkUser";
+
 
 
 
 
 
 export async function GET() {
-    function checkIfExpired() {
-        
-    }
-    const session = (await cookies()).get('Session')
-
-
-
-    
-    if(!session) return Response.json({isAuth: false, res: "Please login to access the content"});
+    const user = await checkUser()
+    if(! user) return Response.json({res: "Unauthorized", ok: false})
     return Response.json({ok: true})
 }

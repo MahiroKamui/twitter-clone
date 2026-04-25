@@ -6,13 +6,12 @@ let testArray = [
     }
 ]
 
-export default async function Posts() {
+export default function GetPosts() {
     let data 
     async function getData() {
         fetch('api/posts')
     }
     useEffect(() => {
-        data = await getData()
 
     })
     return (

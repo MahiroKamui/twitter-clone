@@ -6,8 +6,8 @@ export default function createPostsIfNotExists(db: Database) {
         CREATE TABLE IF NOT EXISTS posts (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             content TEXT NOT NULL,
-            userId INTEGER REFERENCES users(id),
-            createdAt DATE
+            userId INTEGER NOT NULL REFERENCES users(id),
+            createdAt TEXT
         )
     `)
 }

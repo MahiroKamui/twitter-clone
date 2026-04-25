@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import Posts from "./components/Posts";
+import Posts from "./components/GetPosts";
+import CreatePost from "./components/CreatePost";
 
 
 
@@ -13,7 +14,7 @@ export default function Home() {
   const [resMessage, setResMessage] = useState<string>("")
 
   useEffect(() => {
-    fetch('api/authStatus/')
+    fetch('/api/authStatus/')
     .then(res => res.json())
     .then(data => {
       setIsAuthed(data.ok)
@@ -35,14 +36,14 @@ export default function Home() {
 
   return (
     <div className="flex flex-row min-h-[96.5vh] bg-neutral-400">
-      <div className="w-full flex *:grow">
-        <div className="bg-blue-400">
-          cont1
+      <div className="w-full flex ">
+        <div className="bg-blue-400 grow min-w-0">
+          <CreatePost />
         </div>
-        <div className="bg-blue-500">
+        <div className="bg-blue-500 grow-3">
           <Posts />
         </div>
-        <div className="bg-blue-400">
+        <div className="bg-blue-400 grow-2">
           cont3
         </div>
       </div>
