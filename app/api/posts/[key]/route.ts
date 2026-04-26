@@ -3,11 +3,13 @@ import { checkUser } from "@/lib/checkUser"
 
 
 
-export async function DELETE(req: Request, {params}: {params: {key: string}}) {
+export async function DELETE(req: Request, {params}: {params: {key?: string}}) {
     const user = await checkUser()
-    if(! user) return Response.json({res: "hel"})
-    
+    if(! user) return Response.json({res: "hel"});
     const parameters = await params
+    if(! parameters.key) return Response.json({res: "bad", ok: false});
+    console.log("Params: \n", parameters)
+    
 
     const deletePost = db.prepare(`
             DELETE FROM posts

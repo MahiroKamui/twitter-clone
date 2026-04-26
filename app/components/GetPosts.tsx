@@ -5,7 +5,6 @@ import { useEffect, useState } from "react"
 
 export default function GetPosts() {
     const [posts, setPosts] = useState<Posts[]>([])
-    let reversedPosts
 
     async function getData() {
         try {
@@ -20,10 +19,10 @@ export default function GetPosts() {
             console.log(err)
         }
     }
-    async function deletePost(key: number) {
+    async function deletePost(key: any) {
         console.log(key)
         await fetch(`/api/posts/${key}`, {method: "DELETE"})
-        window.location.reload()
+        //window.location.reload()
     }
     useEffect(() => {
         getData()
