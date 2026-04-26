@@ -11,3 +11,10 @@ export type Users = {
     username: string,
     password: string
 }
+
+export type Posts = {
+    id: number,
+    content: string,
+    userId: number,
+    createdAt: string
+}

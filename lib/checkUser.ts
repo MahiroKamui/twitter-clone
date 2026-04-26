@@ -13,7 +13,7 @@ function checkIfSessionValid(session: string | undefined) {
     const queryUser = db.prepare(`
             SELECT * FROM users
             where id = ?
-        `)
+    `)
     
     const sessionData: Session = querySession.get(session) as Session
     if(! sessionData) return false
@@ -34,15 +34,11 @@ function checkIfSessionValid(session: string | undefined) {
     return user
 }
 
-async function retrieveSession() {
-    const session = (await cookies()).get('Session')
-    return session?.value
-}
 
 
 
 export async function checkUser() {
-    const session: string | undefined = await retrieveSession()
+    const session: string | undefined = (await cookies()).get('Session')?.value
     if(! session) return false
     let user = checkIfSessionValid(session)
     if(!user) return false

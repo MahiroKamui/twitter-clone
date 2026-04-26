@@ -20,21 +20,20 @@ export default function CreatePost() {
         }
     }
 
-
     function submitHandler(e: any) {
         e.preventDefault()
         console.log("hello")
         createPost()
-    }
+        window.location.reload()
+    } 
     return (
         <>
             <div>
-                <div className="flex flex-col gap-10">
+                <div className="flex flex-col gap-10 items-center">
                     <div className="flex flex-col items-center ">
                         Create a post?
                     </div>
-                    <form onSubmit={submitHandler} className="flex flex-col ml-">
-
+                    <form onSubmit={submitHandler} className="flex flex-col w-50">
                         <textarea onChange={e => {setPostContent(e.target.value); console.log(e.target.value)}} className="w-70 h-150 bg-blue-300" />
                         <input type="submit" />
                     </form>

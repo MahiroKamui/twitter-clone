@@ -1,13 +1,15 @@
-import { cookies } from "next/headers"
 import db from "@/db/db-init/init"
 import { checkUser } from "@/lib/checkUser";
 
 
 export async function GET() {
     const user = await checkUser()
-    if(!user) return Response.json({res: "Unauthorized", ok: false})
-
+    if(!user) return Response.json({res: "Unauthorized", ok: false}); 
     
+    const posts = db.prepare(`
+            SELECT * FROM posts
+    `).all()
+    return Response.json({res: posts})
 }
 
 export async function POST(req: Request) {
@@ -20,8 +22,9 @@ export async function POST(req: Request) {
         INSERT INTO posts(content, userId, createdAt)
         VALUES(?,?,?)
     `)
+    if(! data.postContent) return Response.json({res: "Your post has not been uploaded.", ok: false})
     insert.run(data.postContent, user.userId, dateParsed)
 
-    console.log(checkUser())
-    return Response.json({res: "helo", ok: true})
+    return Response.json({res: "Your post has been uploaded!", ok: true})
 }
+
