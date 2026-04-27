@@ -3,7 +3,7 @@ import { checkUser } from "@/lib/checkUser"
 
 
 
-export async function DELETE(req: Request, {params}: {params: {key?: string}}) {
+export async function DELETE(req: Request, {params}: {params: Promise<{ key: string; }>}) {
     const user = await checkUser()
     if(! user) return Response.json({res: "hel"});
     const parameters = await params
