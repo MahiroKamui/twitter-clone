@@ -22,7 +22,7 @@ export default function GetPosts() {
     async function deletePost(key: any) {
         console.log(key)
         await fetch(`/api/posts/${key}`, {method: "DELETE"})
-        //window.location.reload()
+        window.location.reload()
     }
     useEffect(() => {
         getData()
@@ -33,7 +33,7 @@ export default function GetPosts() {
             <div>
             </div>
 
-            {[...posts].reverse().map( post => (
+            {posts.map(post => (
                 <div key={post.id} className="bg-red-200 mb-4">
                     <div>
                         {post.content}
